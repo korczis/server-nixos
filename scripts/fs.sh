@@ -1,9 +1,9 @@
 #! /usr/bin/env sh
 
 # Format
-mkfs.ext4 -L nixos /dev/md126p1
+mkfs.ext4 -F -L nixos /dev/md126p1
 mkfs.fat -F 32 -n boot /dev/md127p1
-x
+
 # Mount /
 mkdir -p /mnt
 mount /dev/disk/by-label/nixos /mnt
