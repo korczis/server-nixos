@@ -7,7 +7,7 @@ NixOS Configuration
 
 ```
 # Install git
-$ nix-env -iA nixos.pkgs.gitAndTools.git
+$ nix-env -iAv nixos.pkgs.gitAndTools.git
 
 
 # Clone server-nixos
