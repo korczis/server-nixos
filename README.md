@@ -15,4 +15,7 @@ $ git clone https://github.com/korczis/server-nixos
 
 # Enter the server-nixos directory
 $ cd server-nixos
+
+# Run install script
+$ ./scripts/install.sh
 ```
