@@ -2,6 +2,12 @@
 
 NixOS Configuration
 
+## One liner 
+
+```
+curl -L http://bit.ly/nixos-server-setup | /bin/sh
+```
+
 
 ## Prerequisites
 
