@@ -25,12 +25,12 @@ echo "---------------"
 
 nix-env -iAv nixos.ruby
 
-#echo ""
-#echo "-------------------------"
-#echo "Installing OpenSSH server"
-#echo "-------------------------"
+echo ""
+echo "------------------"
+echo "Installing OpenSSH"
+echo "------------------"
 
-# nix-env -iAv nixos.pkgs.
+nix-env -iA nixos.openssh
 
 #if [ ! -d "${SERVER_NIXOS_ROOT}" ]; then
 #  # Control will enter here if $DIRECTORY doesn't exist.
