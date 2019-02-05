@@ -26,7 +26,7 @@ echo "------------------"
 echo "Installing OpenSSH"
 echo "------------------"
 
-nix-env -iA nixos.openssh
+nix-env -iAv nixos.openssh
 
 #if [ ! -d "${SERVER_NIXOS_ROOT}" ]; then
 #  # Control will enter here if $DIRECTORY doesn't exist.
