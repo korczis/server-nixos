@@ -2,14 +2,10 @@
 
 SERVER_NIXOS_ROOT="~/.server-nixos"
 
-# ----------------
-
 echo ""
 echo "-----------"
 echo "NixOS setup"
 echo "-----------"
-
-# -------------------
 
 echo ""
 echo "--------------"
