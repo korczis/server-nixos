@@ -15,6 +15,13 @@ echo "--------------"
 nix-env -iAv nixos.pkgs.gitAndTools.git
 
 echo ""
+echo "-----------------"
+echo "Installing python"
+echo "-----------------"
+
+nix-env -iAv nixos.python"
+
+echo ""
 echo "---------------"
 echo "Installing ruby"
 echo "---------------"
