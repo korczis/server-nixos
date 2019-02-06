@@ -1,33 +1,5 @@
 ---
 
-#mkfs.ext4 -F -L nixos /dev/md126p1
-- name: create / device
-  filesystem:
-    fstype: ext4
-    dev: /dev/md126p1
-    opts: -F -L nixos
-
-- name: Mount / device
-  mount:
-    path: /mnt
-    src: LABEL=nixos
-    fstype: ext4
-    state: mounted
-
-#mkfs.fat -F 32 -n boot /dev/md127p1
-- name: create /boot device
-  filesystem:
-    fstype: ext4
-    dev: /dev/md127p1
-    opts: -F 32 -n boot
-
-- name: Mount /boot device
-  mount:
-    path: /mnt
-    src: LABEL=boot
-    fstype: fat32
-    state: mounted
-
 - name: generate configuration.nix template
   command: nixos-generate-config --root /mnt
   register: result
@@ -43,3 +15,18 @@
 - name: install nixos
   command: nixos-install --no-root-passwd
   register: result
+
+- name: create  /home/nouma/.ssh
+  file:
+    path: /mnt/home/nouma/.ssh
+    # owner: nouma
+    # group: nouma
+    state: directory
+
+- name: create /home/nouma/.ssh/authorized_keys
+  template:
+    src: home/nouma/.ssh/authorized_keys.j2
+    dest: /mnt/home/nouma/.ssh/authorized_keys
+    # owner: nouma
+    # group: nouma
+    mode: 600

@@ -1,0 +1,102 @@
+---
+
+- name: create /mnt mount point
+  file:
+    path: /mnt
+    state: directory
+
+- name: create /mnt/boot mount point
+  file:
+    path: /mnt/boot
+    state: directory
+
+- name: unmount /mnt/boot
+  mount:
+    path: /mnt/boot
+    state: unmounted
+  ignore_errors: yes
+
+- name: unmount /mnt
+  mount:
+    path: /mnt
+    state: unmounted
+  ignore_errors: yes
+
+# mkfs.ext4 -F -L nixos /dev/md126p1
+- name: create / device
+  filesystem:
+    fstype: ext4
+    dev: /dev/md126p1
+    opts: -F -L nixos
+
+# mkfs.fat -F 32 -n boot /dev/md127p1
+- name: create /boot device
+  filesystem:
+    fstype: vfat
+    dev: /dev/md127p1
+    force: true
+    opts: -F 32 -n boot
+
+# mount /dev/disk/by-label/nixos /mnt
+- name: Mount / device
+  mount:
+    path: /mnt
+    src: LABEL=nixos
+    fstype: ext4
+    fstab: /mnt/etc/fstab
+    state: mounted
+
+# mount /dev/disk/by-label/boot /mnt/boot
+- name: Mount /boot device
+  mount:
+    path: /mnt/boot
+    src: LABEL=boot
+    fstype: vfat
+    fstab: /mnt/etc/fstab
+    state: mounted
+
+# ---
+
+## umount /mnt/boot
+#- name: umount /mnt/boot
+#  command: umount /mnt/boot
+#  ignore_errors: yes
+#  register: result
+#
+## umount /mnt
+#- name: umount /
+#  command: umount /mnt
+#  ignore_errors: yes
+#  register: result
+#
+## mkfs.ext4 -F -L nixos /dev/md126p1
+#- name: generate /
+#  command: mkfs.ext4 -F -L nixos /dev/md126p1
+#  register: result
+#
+#- name: create /mnt mount point
+#  file:
+#    path: /mnt
+#    state: directory
+#
+## mount /dev/disk/by-label/nixos /mnt
+#- name: mount /
+#  command: mount /dev/disk/by-label/nixos /mnt
+#  register: result
+#
+## mkfs.fat -F 32 -n boot /dev/md127p1
+#- name: generate /boot
+#  command: mkfs.fat -F 32 -n boot /dev/md127p1
+#  register: result
+#
+#- name: create /mnt/boot mount point
+#  file:
+#    path: /mnt/boot
+#    state: directory
+#
+## mount /dev/disk/by-label/boot /mnt/boot
+#- name: mount /boot
+#  command: mount /dev/disk/by-label/boot /mnt/boot
+#  register: result
+
+

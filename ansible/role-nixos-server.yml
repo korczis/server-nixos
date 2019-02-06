@@ -2,7 +2,12 @@
   gather_facts: yes
   become: true
   remote_user: root
-  debugger: never # always | never | on_failed | on_unreachable | on_skipped
+  debugger: on_failed # always | never | on_failed | on_unreachable | on_skipped
   roles:
-    - pre-os-upgrade
+    - os-fs
     - os-install
+    # ----
+    # - pre-os-upgrade
+    # - os-fs
+    # - os-install
+    # - os-tweaks

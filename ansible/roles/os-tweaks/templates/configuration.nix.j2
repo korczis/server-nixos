@@ -31,10 +31,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    htop
     mc
-    mosh
-    nmap
     python
     ruby
     tmux
@@ -46,7 +43,7 @@
   # started in user sessions.
   programs.bash.enableCompletion = true;
   programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
 
@@ -81,20 +78,13 @@
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
-  users.users.root = {
-    initialHashedPassword = "$6$aWRWk9VDmiJZltbv$1PazVsOP.fYV0vA4uHFhqLhfLEnO/1mHNyMAcQHrfXTEP8KO7eAD0qw9byxWPx8mW4R7a/qOrSygYDkvTs0ZS0";
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCu0w8+zEfKGl//hGj1DwIjn+Gq6FxY3t1Zy8Sf+X9SCv8C+jt8ALxCIP1FJ6UZAahKnXF7y1rsTavNYHz7qLoIJRcg1/qmyi4uo7T5rbBm+jLkcXBxKXYMmgScgyXcfiEHY1Ht7KJSMryLdqeYonIDu1yEfLoAHIMUTUCyttcZ9j4VkxRGJDlb2Zt4wnfSVQMDgMsY4wwNb2LKug5SZpm3IThoqgsGZIscMIofVAOo/ksJBF2iyoQtttDJ+b98srbClimRoltk56OLkIWkl0l2Erj5yTBv9BDj91qcVp44iCqxzjiUqb0LsQaMrY24IT4lS5P1uGsz7UZS6vKLlM1jmZEdvCAvtvKIkhxZDGjTGKPf1B/4npsm50vke7gky1vy4BQ2OIUHOX2BsfZfx9FKiFKX7Li9vdytskCGQBgf84sGDuiP3CNQA4zmWGtzfIM3M68GBn9AvScOjskHmx3sm5KTZMakW1JSGJNrj+hxnRds9P+JVi8YQRNc3KZMxfnd2phX8itGzN966eSvGPDldsaJ3wClEdtTijA2jqQ96QMBEggUWbDHJE/BCCPGfanVqyFppzovZmKKW89nLsh0xlv4CMlDQQ/0eVlkuzHbo7ZlpsKtGBw+fnNiOMCJgZxD2UCsi2MLfNW+mfjAWAPHthBFbSIfz5XuCtqG0Dm59w== korczis@gmail.com"
-    ];
-  };
-
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nouma = {
     isNormalUser = true;
     uid = 1000;
     home = "/home/nouma";
     description = "Nouma Noumelin";
     extraGroups = [ "wheel" "networkmanager" ];
-    initialHashedPassword = "$6$R1AKTspMe7izu3B$S.pJR/W0anOg1gIT1BUd976RjbkU31CJdgRj.xIsgh0GI04ES/raHAeEQktS203ddMDbbkF0QCljMrjwapHxu0";
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCu0w8+zEfKGl//hGj1DwIjn+Gq6FxY3t1Zy8Sf+X9SCv8C+jt8ALxCIP1FJ6UZAahKnXF7y1rsTavNYHz7qLoIJRcg1/qmyi4uo7T5rbBm+jLkcXBxKXYMmgScgyXcfiEHY1Ht7KJSMryLdqeYonIDu1yEfLoAHIMUTUCyttcZ9j4VkxRGJDlb2Zt4wnfSVQMDgMsY4wwNb2LKug5SZpm3IThoqgsGZIscMIofVAOo/ksJBF2iyoQtttDJ+b98srbClimRoltk56OLkIWkl0l2Erj5yTBv9BDj91qcVp44iCqxzjiUqb0LsQaMrY24IT4lS5P1uGsz7UZS6vKLlM1jmZEdvCAvtvKIkhxZDGjTGKPf1B/4npsm50vke7gky1vy4BQ2OIUHOX2BsfZfx9FKiFKX7Li9vdytskCGQBgf84sGDuiP3CNQA4zmWGtzfIM3M68GBn9AvScOjskHmx3sm5KTZMakW1JSGJNrj+hxnRds9P+JVi8YQRNc3KZMxfnd2phX8itGzN966eSvGPDldsaJ3wClEdtTijA2jqQ96QMBEggUWbDHJE/BCCPGfanVqyFppzovZmKKW89nLsh0xlv4CMlDQQ/0eVlkuzHbo7ZlpsKtGBw+fnNiOMCJgZxD2UCsi2MLfNW+mfjAWAPHthBFbSIfz5XuCtqG0Dm59w== korczis@gmail.com"
     ];
