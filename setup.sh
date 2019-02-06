@@ -19,7 +19,7 @@ echo "-----------------"
 echo "Installing python"
 echo "-----------------"
 
-nix-env -iAv nixos.python"
+nix-env -iAv nixos.python
 
 echo ""
 echo "---------------"
