@@ -37,6 +37,7 @@ echo "------------------"
 
 nix-env -iAv nixos.openssh
 
+systemctl enable sshd
 systemctl start sshd
 
 mkdir -p ~/.ssh
@@ -47,6 +48,8 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCu0w8+zEfKGl//hGj1DwIjn+Gq6FxY3t1Zy8
     > ".ssh/authorized_keys"
 
 chmod 600 ~/.ssh/authorized_keys
+
+systemctl restart sshd
 
 #if [ ! -d "${SERVER_NIXOS_ROOT}" ]; then
 #  # Control will enter here if $DIRECTORY doesn't exist.
