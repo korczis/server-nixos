@@ -1,0 +1,17 @@
+---
+
+- name: generate configuration.nix template
+  command: nixos-generate-config --root /mnt
+  register: result
+
+- name: create configuration.nix
+  template:
+    src: configuration.nix.j2
+    dest: /mnt/etc/nixos/configuration.nix
+    owner: root
+    group: root
+    mode: 0644
+
+- name: install nixos
+  command: nixos-install --no-root-passwd
+  register: result

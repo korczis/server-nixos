@@ -4,4 +4,5 @@
   remote_user: root
   debugger: never # always | never | on_failed | on_unreachable | on_skipped
   roles:
-    - os-upgrade
+    - pre-os-upgrade
+    - os-install
