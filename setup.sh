@@ -51,6 +51,10 @@ chmod 600 ~/.ssh/authorized_keys
 
 systemctl restart sshd
 
+# Hacks
+
+ln -s `which shutdown` /usr/bin/shutdown
+
 #if [ ! -d "${SERVER_NIXOS_ROOT}" ]; then
 #  # Control will enter here if $DIRECTORY doesn't exist.
 #  echo "Creating "${SERVER_NIXOS_ROOT}"

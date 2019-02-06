@@ -1,4 +1,6 @@
-server
+# server
+# 192.168.88.37
+192.168.88.41
 
 [webservers]
 # foo.example.com

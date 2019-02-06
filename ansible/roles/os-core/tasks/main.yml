@@ -1,0 +1,21 @@
+---
+
+- name: create shutdown command link
+  command: ln -s /run/current-system/sw /usr/bin
+  register: result
+  args:
+    creates:  /usr/bin/shutdown
+
+#- name: create ~/bin directory
+#  file:
+#    path: ~/bin
+#    state: directory
+#
+#- name: create shutdown command link
+#  command: ln -s /run/current-system/sw/bin/shutdown ~/bin/
+#  register: result
+#  args:
+#    creates:  ~/bin/shutdown
+#
+- name: reboot machine
+  reboot:

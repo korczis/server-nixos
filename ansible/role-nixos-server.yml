@@ -4,8 +4,10 @@
   remote_user: root
   debugger: on_failed # always | never | on_failed | on_unreachable | on_skipped
   roles:
-    - os-fs
-    - os-install
+    - os-core
+    # - os-fs
+    # - os-tweaks
+    # - os-install
     # ----
     # - pre-os-upgrade
     # - os-fs

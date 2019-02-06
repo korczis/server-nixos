@@ -1,9 +1,9 @@
 ---
 
-- name: create /mnt mount point
-  file:
-    path: /mnt
-    state: directory
+#- name: create /mnt mount point
+#  file:
+#    path: /mnt
+#    state: directory
 
 - name: create /mnt/boot mount point
   file:
@@ -27,6 +27,7 @@
   filesystem:
     fstype: ext4
     dev: /dev/md126p1
+    force: true
     opts: -F -L nixos
 
 # mkfs.fat -F 32 -n boot /dev/md127p1
