@@ -1,0 +1,5 @@
+---
+
+- name: upgrade os
+  command: nixos-rebuild switch --upgrade
+  register: result

@@ -1,0 +1,7 @@
+- hosts: all
+  gather_facts: yes
+  become: true
+  remote_user: root
+  debugger: never # always | never | on_failed | on_unreachable | on_skipped
+  roles:
+    - os-upgrade
